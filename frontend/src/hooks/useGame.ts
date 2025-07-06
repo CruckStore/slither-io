@@ -1,3 +1,4 @@
+// src/hooks/useGame.ts
 import { useEffect, useRef } from "react";
 import { io, Socket } from "socket.io-client";
 
@@ -12,6 +13,7 @@ export interface Player {
   snake: Point[];
   color: string;
   score: number;
+  speed: number;
 }
 
 export interface Orb {
@@ -21,6 +23,7 @@ export interface Orb {
   value: number;
   color: string;
 }
+
 export interface State {
   players: Player[];
   orbs: Orb[];
@@ -39,8 +42,16 @@ export function useGameState(username: string) {
       pidRef.current = socket.id!;
       socket.emit("join", { username });
     });
+
     socket.on("state", (st: State) => {
       stateRef.current = st;
+    });
+
+    socket.on("state", (st) => console.log("state reçu :", st));
+
+    socket.on("dead", () => {
+      stateRef.current = { players: [], orbs: [] };
+      socket.emit("join", { username });
     });
 
     return () => {

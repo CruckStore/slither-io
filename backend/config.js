@@ -1,10 +1,10 @@
 module.exports = {
   PORT: process.env.PORT || 3001,
-  TICK_RATE: 300,
+  TICK_RATE: 60,
   MAP_SIZE: 2000,
   INITIAL_ORBS: 500,
-  ORB_RESPAWN_THRESHOLD: 1000,
-  MAX_BOTS: 20,
+  ORB_RESPAWN_THRESHOLD: 500, // nombre d'orbes minimum avant respawn
+  MAX_BOTS: 75,
 
   ORB_TYPES: [
     { radius: 5, value: 1, color: "#88F" }, // petit

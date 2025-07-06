@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -17,12 +19,15 @@ initOrbs(orbs);
 
 io.on("connection", (socket) => {
   socket.on("join", ({ username }) => {
+    const head = randomPosition();
+    const snake = Array.from({ length: 5 }, () => ({ x: head.x, y: head.y }));
+
     players.set(socket.id, {
       id: socket.id,
       username: username || `Player_${socket.id.slice(0, 4)}`,
-      snake: [randomPosition()],
+      snake,
       direction: Math.random() * Math.PI * 2,
-      speed: 2,
+      speed: 80,
       color:
         "#" +
         Math.floor(Math.random() * 0xffffff)
