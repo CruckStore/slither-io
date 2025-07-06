@@ -12,6 +12,7 @@ export interface Player {
   radius: number;
   value: number;
   color: string;
+  score: number;
 }
 export interface Orb {
   x: number;
