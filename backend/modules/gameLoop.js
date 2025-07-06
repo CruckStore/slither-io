@@ -11,9 +11,10 @@ function startGameLoop(players, orbs, io) {
       p.direction += p.pendingAngle;
       p.pendingAngle = 0;
       const head = p.snake[0];
-      const nx = head.x + Math.cos(p.direction) * p.speed;
-      const ny = head.y + Math.sin(p.direction) * p.speed;
-      p.snake.unshift({ x: nx, y: ny });
+      p.snake.unshift({
+        x: head.x + Math.cos(p.direction) * p.speed,
+        y: head.y + Math.sin(p.direction) * p.speed,
+      });
       p.snake.pop();
     });
 
@@ -23,10 +24,13 @@ function startGameLoop(players, orbs, io) {
         const o = orbs[i];
         const dx = o.x - head.x,
           dy = o.y - head.y;
-        if (dx * dx + dy * dy < 15 * 15) {
+        if (dx * dx + dy * dy < (o.radius + 10) ** 2) {
           orbs.splice(i, 1);
+          p.score += o.value;
           const tail = p.snake[p.snake.length - 1];
-          p.snake.push({ x: tail.x, y: tail.y });
+          for (let k = 0; k < o.value; k++) {
+            p.snake.push({ x: tail.x, y: tail.y });
+          }
         }
       }
     });
@@ -39,6 +43,7 @@ function startGameLoop(players, orbs, io) {
         username: p.username,
         snake: p.snake,
         color: p.color,
+        score: p.score,
       })),
       orbs,
     };
