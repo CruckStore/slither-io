@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
-import Game from './components/Game';
+import React, { useState, useEffect } from "react";
+import Game from "./components/Game";
 
 export default function App() {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState("");
   const [joined, setJoined] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  useEffect(() => {
+    console.log("App mounted");
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.trim()) setJoined(true);
+    if (username.trim()) setJoined(true);
   };
 
   return joined ? (
-    <Game username={name} />
+    <Game username={username} />
   ) : (
-    <form onSubmit={submit} className="login-form">
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        color: "#fff",
+      }}
+    >
       <h1>Slither Clone</h1>
       <input
-        value={name}
-        onChange={e => setName(e.target.value)}
+        style={{ padding: "0.5rem", margin: "0.5rem" }}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
         placeholder="Votre pseudo"
       />
-      <button type="submit">Jouer</button>
+      <button type="submit" style={{ padding: "0.5rem 1rem" }}>
+        Jouer
+      </button>
     </form>
   );
 }
