@@ -4,9 +4,9 @@ const { Server } = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
 
 const PORT = process.env.PORT || 3001;
-const TICK_RATE = 50;
+const TICK_RATE = 20;
 const MAP_SIZE = 2000;
-const INITIAL_ORBS = 5000;
+const INITIAL_ORBS = 500;
 const ORB_RESPAWN_THRESHOLD = 500;
 const MAX_BOTS = 20;
 
