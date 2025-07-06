@@ -9,6 +9,8 @@ export interface Player {
   id: string;
   username: string;
   snake: Point[];
+  radius: number;
+  value: number;
   color: string;
 }
 export interface Orb {
