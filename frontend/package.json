@@ -1,0 +1,21 @@
+{
+    "name": "slither-io-frontend",
+    "description": "Frontend for Slither.io clone using React and Vite",
+    "version": "1.0.0",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "socket.io-client": "^4.7.2"
+    },
+    "devDependencies": {
+      "typescript": "^5.1.6",
+      "vite": "^4.3.9",
+      "@vitejs/plugin-react": "^3.1.0"
+    }
+  }
+  
