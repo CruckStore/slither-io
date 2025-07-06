@@ -1,8 +1,15 @@
 module.exports = {
   PORT: process.env.PORT || 3001,
-  TICK_RATE: 20, // mises à jour / seconde
-  MAP_SIZE: 2000, // taille du terrain
-  INITIAL_ORBS: 500, // orbes au démarrage
-  ORB_RESPAWN_THRESHOLD: 500, // respawn quand orbes < seuil
-  MAX_BOTS: 20, // nombre max de bots
+  TICK_RATE: 20,
+  MAP_SIZE: 2000,
+  INITIAL_ORBS: 500,
+  ORB_RESPAWN_THRESHOLD: 500,
+  MAX_BOTS: 20,
+
+  ORB_TYPES: [
+    { radius: 5, value: 1, color: "#88F" }, // petit
+    { radius: 10, value: 3, color: "#8F8" }, // moyen
+    { radius: 15, value: 5, color: "#F88" }, // gros
+    { radius: 20, value: 8, color: "#FF0" }, // très gros (lumineux)
+  ],
 };
