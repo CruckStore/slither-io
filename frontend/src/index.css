@@ -1,0 +1,14 @@
+body, html, #root {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+  }
+  .login-form {
+    display: flex; flex-direction: column; align-items: center;
+    height: 100%; justify-content: center;
+  }
+  .login-form input {
+    padding: 0.5rem; margin: 0.5rem;
+  }
+  .login-form button {
+    padding: 0.5rem 1rem;
+  }
+  
