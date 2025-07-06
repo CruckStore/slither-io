@@ -5,18 +5,20 @@ export interface Point {
   x: number;
   y: number;
 }
+
 export interface Player {
   id: string;
   username: string;
   snake: Point[];
-  radius: number;
-  value: number;
   color: string;
   score: number;
 }
+
 export interface Orb {
   x: number;
   y: number;
+  radius: number;
+  value: number;
   color: string;
 }
 export interface State {
