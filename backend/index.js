@@ -17,20 +17,20 @@ initOrbs(orbs);
 
 io.on("connection", (socket) => {
   socket.on("join", ({ username }) => {
-    const color =
-      "#" +
-      Math.floor(Math.random() * 0xffffff)
-        .toString(16)
-        .padStart(6, "0");
     players.set(socket.id, {
       id: socket.id,
       username: username || `Player_${socket.id.slice(0, 4)}`,
       snake: [randomPosition()],
       direction: Math.random() * Math.PI * 2,
       speed: 2,
-      color,
+      color:
+        "#" +
+        Math.floor(Math.random() * 0xffffff)
+          .toString(16)
+          .padStart(6, "0"),
       pendingAngle: 0,
       isBot: false,
+      score: 0,
     });
   });
 
@@ -47,5 +47,5 @@ io.on("connection", (socket) => {
 startGameLoop(players, orbs, io);
 
 server.listen(PORT, () => {
-  console.log(`🚀 Backend started on port ${PORT}`);
+  console.log(`🚀 Backend démarré sur le port ${PORT}`);
 });
